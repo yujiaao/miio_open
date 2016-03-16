@@ -24,6 +24,8 @@
 
 通过SecureCRT工具打开串口，输入help既可以得到支持的串口命令列表。
 
+![](./MHCW03P/example1.png)
+
 ## 常用的串口命令
 
 
