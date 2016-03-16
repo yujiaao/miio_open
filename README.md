@@ -1,2 +1,5 @@
 # miio_open
-开放平台文档
+
+## WIFI模组接入
+
+[WIFI模组接入指南](./wifi)
