@@ -79,13 +79,13 @@ MCU固件需要尾部添加CRC后再上传，你可以使用我们提供的[工�
 
 - 升级流程说明
 
- 1. MIIO模组通过http连接下载固件，同MCU通过Xmodem协议进行数据传输。 
+1. MIIO模组通过http连接下载固件，同MCU通过Xmodem协议进行数据传输。 
 
- 2. 传输数据包为128B，加上Header,Packet Number,CherckSum共计134字节。 
+2. 传输数据包为128B，加上Header,Packet Number,CherckSum共计134字节。 
 
- 3. 传输最后一个包时，如果有效数据不足128B，则补齐为1A FF FF FF…若128B,则补加一个数据包，数据为1A FF FF
+3. 传输最后一个包时，如果有效数据不足128B，则补齐为1A FF FF FF…若128B,则补加一个数据包，数据为1A FF FF
 
- 4. Xmodem传输数据握手时，第一个NAK或C用于确定校验方式，第二个NAK或C开始传输数据。因此超时时间不宜过长。 
+4. Xmodem传输数据握手时，第一个NAK或C用于确定校验方式，第二个NAK或C开始传输数据。因此超时时间不宜过长。 
 
 ![](../md_images/MCU升级逻辑流程.png)
 
