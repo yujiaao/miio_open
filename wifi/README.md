@@ -62,6 +62,44 @@
 
 **miIO.info 是一个基本命令，你随时都可以向设备发送，查询设备的基本信息**
 
+## 通过开放平台管理MCU固件
+
+- 版本号上报
+
+MCU上电后，设置产品的mcu_version。 MCU版本号为四位数字，你可以在开放平台上传并设置最新的版本号。
+
+```
+>mcu_version 1000
+<ok
+```
+
+- 固件上传与CRC验证
+
+MCU固件需要尾部添加CRC后再上传，你可以使用我们提供的[工具](../md_images/crc32)自行添加（甚至可以集成到你的编译脚本里面）。
+
+- 升级流程说明
+
+ 1. MIIO模组通过http连接下载固件，同MCU通过Xmodem协议进行数据传输。 
+ 2. 传输数据包为128B，加上Header,Packet Number,CherckSum共计134字节。 
+ 3. 传输最后一个包时，如果有效数据不足128B，则补齐为1A FF FF FF…若128B,则补加一个数据包，数据为1A FF FF… 4.
+ 4. Xmodem传输数据握手时，第一个NAK或C用于确定校验方式，第二个NAK或C开始传输数据。因此超时时间不宜过长。 
+
+![](../md_images/MCU升级逻辑流程.png)
+
+- xmodem协议
+
+你可以下载[xmodem源代码](../md_images/xmodem.c)，然后继承到你的主控MCU当中。
+
+*如果你使用的是Atmel系列的mcu，可以联系我们(miot-open@xiaomi.com)提供例程*
+
+- 通过开放平台调试
+
+编译好固件，添加CRC32，上传，获取固件的url后，你可以像设备发送如下命令来启动MCU OTA过程：
+
+```
+{"method":"miIO.ota","params": {"mcu_url":"xxxxxxx"},"id":1}
+```
+
 ## Profile 协议规范
 
 在开始编写你的第一个方法之前，需要先了解一下基本规范。开始之前确保你已经阅读了[开放平台](https://open.home.mi.com/) 里面的相关介绍。
@@ -71,7 +109,6 @@
 变量，函数的命令风格遵循[GNU-C](https://www.gnu.org/prep/standards/)风格，小写字母，下划线分隔就可以了。（天呐不要驼峰式...）
 
 请参考示例 [空气净化器举例](../md_images/设备profile模板 - 空气净化器举例.pdf)
-
 
 ## 硬件设计规约
 
