@@ -391,13 +391,13 @@ MCU固件需要尾部添加CRC后再上传，你可以使用我们提供的[工�
 
 ### xmodem协议
 
-你可以下载[xmodem源代码](../md_images/xmodem.c)，然后继承到你的主控MCU当中。
+你可以下载[xmodem源代码](../md_images/xmodem.c)，然后集成到你的主控MCU当中。
 
 *如果你使用的是Atmel系列的mcu，可以联系我们(miot-open@xiaomi.com)提供例程*
 
 ### 通过开放平台调试
 
-编译好固件，添加CRC32，上传，获取固件的url后，你可以像设备发送如下命令来启动MCU OTA过程：
+编译好固件，添加CRC32，上传，获取固件的url后，你可以向设备发送如下命令来启动MCU OTA过程：
 
 ```
 {"method":"miIO.ota","params": {"mcu_url":"xxxxxxx"},"id":1}
