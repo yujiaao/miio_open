@@ -18,6 +18,27 @@
 
 - LOG输出口(74880 8N1)，你可以通过这个口看到模组的工作状态
 
+- 一个典型的LOG输出，包含固件版本 *firmware*， 设备DID *digital_did*， MAC地址*mac address*
+
+```
+_|      _|  _|_|_|  _|_|_|    _|_|  
+_|_|  _|_|    _|      _|    _|    _|
+_|  _|  _|    _|      _|    _|    _|
+_|      _|    _|      _|    _|    _|
+_|      _|  _|_|_|  _|_|_|    _|_|  
+OTP read OK
+JENKINS BUILD NUMBER: N/A
+BUILD TIME: N/A
+BUILT BY: N/A
+firmware: 1.2.5
+MIIO APP VER: N/A
+MIIO MCU VER: N/A
+ESP SDK VER: 1.3.0(2ecfb74)
+digital_did is 12593364
+mac address is f0b42905b742
+```
+
+
 ## 设备固件研发
 
 - 你只需要通过串口(115200 8N1)即可与小米模组进行通信，如图：
