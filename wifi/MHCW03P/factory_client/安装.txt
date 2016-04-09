@@ -1,0 +1,6 @@
+1. 安装python到默认目录 driver_install\python-2.7.8.msi
+2. 复制factory_client 到 C:\factory_client
+3. 记事本打开config.py 配置COM口到LOG输出口
+4. 双击check_miio_application_bin.bat
+5. 显示绿色PASS即为检查通过
+6  检查历史记录在log目录
